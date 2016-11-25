@@ -1,0 +1,5 @@
+toDoList\core\service\ListServiceImpl.class
+toDoList\core\controller\ListController.class
+toDoList\core\dao\TaskListDaoImpl.class
+toDoList\core\service\ListService.class
+toDoList\core\dao\TaskListDao.class
