@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="sqljdbc">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/LibrariesForIdea/sqljdbc_6.0/enu/sqljdbc.jar!/" />
+      <root url="jar://$USER_HOME$/LibrariesForIdea/sqljdbc_6.0/enu/sqljdbc4.jar!/" />
+      <root url="jar://$USER_HOME$/LibrariesForIdea/sqljdbc_6.0/enu/sqljdbc41.jar!/" />
+      <root url="jar://$USER_HOME$/LibrariesForIdea/sqljdbc_6.0/enu/sqljdbc42.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
