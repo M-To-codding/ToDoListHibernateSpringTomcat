@@ -1,8 +1,0 @@
-create table task(
-id_task int AUTO_INCREMENT primary key,
-name_task varchar(30) not null,
-is_active boolean default true
-);
-
-String query = "INSERT INTO project.tasks (id_task, name_task, is_done)";
-String query = "select id_task, name_task, is_done from project.tasks";

@@ -21,7 +21,6 @@
       <root url="jar://$USER_HOME$/LibrariesForIdea/spring-framework-4.3.4.RELEASE/libs/spring-webmvc-4.3.4.RELEASE.jar!/" />
       <root url="jar://$USER_HOME$/LibrariesForIdea/spring-framework-4.3.4.RELEASE/libs/spring-webmvc-portlet-4.3.4.RELEASE.jar!/" />
       <root url="jar://$USER_HOME$/LibrariesForIdea/spring-framework-4.3.4.RELEASE/libs/spring-websocket-4.3.4.RELEASE.jar!/" />
-      <root url="jar://$USER_HOME$/LibrariesForIdea/commons-logging-1.2/commons-logging-1.2.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/LibrariesForIdea/spring-framework-4.3.4.RELEASE/libs/spring-aop-4.3.4.RELEASE-javadoc.jar!/" />
@@ -44,7 +43,6 @@
       <root url="jar://$USER_HOME$/LibrariesForIdea/spring-framework-4.3.4.RELEASE/libs/spring-webmvc-4.3.4.RELEASE-javadoc.jar!/" />
       <root url="jar://$USER_HOME$/LibrariesForIdea/spring-framework-4.3.4.RELEASE/libs/spring-webmvc-portlet-4.3.4.RELEASE-javadoc.jar!/" />
       <root url="jar://$USER_HOME$/LibrariesForIdea/spring-framework-4.3.4.RELEASE/libs/spring-websocket-4.3.4.RELEASE-javadoc.jar!/" />
-      <root url="jar://$USER_HOME$/LibrariesForIdea/commons-logging-1.2/commons-logging-1.2-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/LibrariesForIdea/spring-framework-4.3.4.RELEASE/libs/spring-aop-4.3.4.RELEASE-sources.jar!/" />

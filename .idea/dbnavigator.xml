@@ -23,20 +23,16 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="02b11de6-e414-443f-adc1-e2e36fdced1c">
+        <schema name="project" object-types="column, constraint, function, index, procedure, table, dataset trigger, view" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="82d56226-5f58-40cb-abc4-9139b149bfcb">
+    <connection id="02b11de6-e414-443f-adc1-e2e36fdced1c">
       <console name="Connection" type="STANDARD" />
-      <console name="Connection 1" type="STANDARD"><![CDATA[select * from project.task;
-
-select * from project.task where is_active = false;
-
-update project.task set is_active = true where id_task = 1;]]></console>
     </connection>
-  </component>
-  <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-list connection-id="82d56226-5f58-40cb-abc4-9139b149bfcb" dataset="project.task" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -61,7 +57,7 @@ update project.task set is_active = true where id_task = 1;]]></console>
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="82d56226-5f58-40cb-abc4-9139b149bfcb" active="true">
+      <connection id="02b11de6-e414-443f-adc1-e2e36fdced1c" active="true">
         <database>
           <name value="Connection" />
           <description value="" />
@@ -74,7 +70,7 @@ update project.task set is_active = true where id_task = 1;]]></console>
           <url-type value="DATABASE" />
           <host value="localhost" />
           <port value="3307" />
-          <database value="project" />
+          <database value="mysql" />
           <os-authentication value="false" />
           <empty-password value="false" />
           <user value="root" />
