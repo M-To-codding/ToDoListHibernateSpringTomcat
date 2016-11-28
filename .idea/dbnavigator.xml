@@ -34,13 +34,10 @@
       <console name="Connection" type="STANDARD" />
     </connection>
   </component>
-<<<<<<< HEAD
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-list connection-id="02b11de6-e414-443f-adc1-e2e36fdced1c" dataset="project.task" active-filter-id="EMPTY_FILTER" />
     <filter-list connection-id="02b11de6-e414-443f-adc1-e2e36fdced1c" dataset="project.tasklist" active-filter-id="EMPTY_FILTER" />
   </component>
-=======
->>>>>>> e09f6f9e886a956cd1891eeeeddf593e3c62f016
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
   </component>
@@ -77,11 +74,7 @@
           <url-type value="DATABASE" />
           <host value="localhost" />
           <port value="3307" />
-<<<<<<< HEAD
           <database value="project" />
-=======
-          <database value="mysql" />
->>>>>>> e09f6f9e886a956cd1891eeeeddf593e3c62f016
           <os-authentication value="false" />
           <empty-password value="false" />
           <user value="root" />

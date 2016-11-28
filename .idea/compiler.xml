@@ -26,11 +26,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-<<<<<<< HEAD
       <module name="ToDoList" target="1.8" />
-=======
-      <module name="ToDoList" target="1.5" />
->>>>>>> e09f6f9e886a956cd1891eeeeddf593e3c62f016
     </bytecodeTargetLevel>
   </component>
 </project>

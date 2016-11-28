@@ -30,11 +30,7 @@ public class HibernateConfiguration {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-<<<<<<< HEAD
         sessionFactory.setPackagesToScan(new String[]{"toDoList.core.model"});
-=======
-        sessionFactory.setPackagesToScan(new String[]{"toDoList.model"});
->>>>>>> e09f6f9e886a956cd1891eeeeddf593e3c62f016
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }

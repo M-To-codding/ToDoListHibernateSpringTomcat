@@ -87,7 +87,6 @@
                     <port>8080</port>
                 </configuration>
             </plugin>
-<<<<<<< HEAD
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -96,8 +95,6 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-=======
->>>>>>> e09f6f9e886a956cd1891eeeeddf593e3c62f016
         </plugins>
     </build>
 

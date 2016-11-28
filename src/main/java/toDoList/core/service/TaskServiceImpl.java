@@ -6,20 +6,15 @@ import org.springframework.transaction.annotation.Transactional;
 import toDoList.core.dao.TaskDaoImpl;
 import toDoList.core.model.Task;
 
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-=======
-import java.util.List;
->>>>>>> e09f6f9e886a956cd1891eeeeddf593e3c62f016
 
 /**
  * Created by employee on 11/25/16.
  */
 @Service
 @Transactional
-<<<<<<< HEAD
 public class TaskServiceImpl implements TaskService {
 
     @Autowired(required = true)
@@ -80,28 +75,4 @@ public class TaskServiceImpl implements TaskService {
 
     }
 }
-=======
-public class TaskServiceImpl implements TaskService{
-
-        @Autowired(required = true)
-        private TaskDaoImpl taskDao;
-
-
-        public void createTask(Task task) {
-            taskDao.createTask(task);
-        }
-
-
-        public List<Task> getAll() {
-
-            return taskDao.getAll();
-        }
-
-
-        public void deleteTask(Integer taskId) {
-            taskDao.deleteTask(taskId);
-
-        }
-    }
->>>>>>> e09f6f9e886a956cd1891eeeeddf593e3c62f016
 
