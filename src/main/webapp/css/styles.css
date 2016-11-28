@@ -65,3 +65,18 @@ padding-left: 40px;
 border-color:  rgba(0, 9, 36, 0.2);
 }
 
+.addTasks {
+display:block;
+    width:450px;
+    margin-left: 500px;
+    height:inherit;
+    background-color: rgba(255, 255, 214, 0.3);
+    border-radius: 10px;
+    border:2px solid rgba(234, 230, 255, 1);
+    padding-left:10px;
+    padding-top:7px;
+    text-decoration:none;
+    color:white;
+    transition: all .2s ease-in-out;
+    margin-top: 200px;
+}
