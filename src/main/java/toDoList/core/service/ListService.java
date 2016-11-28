@@ -11,4 +11,12 @@ import java.util.List;
  */
 public interface ListService {
     public List<TaskList> getAll();
+
+    TaskList getById(String id);
+
+    void createList(TaskList taskList);
+
+    void update(TaskList taskList);
+
+    void deleteTaskList(String id);
 }

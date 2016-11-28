@@ -2,8 +2,6 @@ package toDoList.core.model;
 
 import javax.persistence.*;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
 @Entity
 @Table (name = "task", catalog = "project", uniqueConstraints = {
         @UniqueConstraint(columnNames = "id")
@@ -11,32 +9,36 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Task {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "taskId")
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private String id;
 
-    @Column(name = "taskName")
+    @Column(name = "name")
     private String name;
 
     @Column(name = "is_active")
     private Boolean isActive = false;
 
     @Column(name = "id_list")
-    private Integer listId;
+    private String listId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_list", insertable = false, updatable = false )
+    private TaskList tasksList;
 
     public Task() {
     }
 
-    public Task(String name, Integer listId) {
+    public Task(String name) {
         this.name = name;
         this.listId = listId;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -56,11 +58,11 @@ public class Task {
         this.isActive = isActive;
     }
 
-    public Integer getListId() {
+    public String getListId() {
         return listId;
     }
 
-    public void setListId(Integer listId) {
+    public void setListId(String listId) {
         this.listId = listId;
     }
 }
