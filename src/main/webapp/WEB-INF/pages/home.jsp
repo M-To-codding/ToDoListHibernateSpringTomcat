@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+<<<<<<< HEAD
 	<meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -27,6 +28,21 @@
 		</form>
 
 	</c:forEach>
+=======
+
+</head>
+<body>
+<input type="submit" value="Add taskList" onclick="window.location='newTasklist.jsp'">&nbsp&nbsp
+<input type="submit" value="Add task" onclick="window.location='/newTask'">
+
+<br>
+Tasklists:
+<br>
+<c:forEach items="${taskLists}" var="item">
+    &nbsp ${item.getName()} &nbsp <a href="/tasklist_page?taskListId=${item.getId()}"> view tasks </a>
+    <br>
+</c:forEach>
+>>>>>>> e09f6f9e886a956cd1891eeeeddf593e3c62f016
 
 </body>
 </html>

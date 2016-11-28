@@ -13,6 +13,7 @@
 
 <form action="/addNewTask">
 
+<<<<<<< HEAD
  <input type="hidden" name="listId" value="${taskList.getId()}">
        <input type="text" name="taskName" placeholder="task name" required>
         <!--  <input type="date" name="taskDate" placeholder="enter date" required> -->
@@ -22,6 +23,21 @@
     <select name="taskList">
         <c:forEach items="${taskLists}" var="item">
             <option value="${item.getId()}"> ${item.getName()}  </option>
+=======
+    <input type="text" name="task_name" placeholder="enter title" required>
+    <br>
+    <textarea name ="task_description" rows="10" cols="50"></textarea>
+    <br>
+    <input type="date" name="task_date" placeholder="enter date" required>
+    <br>
+
+
+    <select name="task_list">
+        <c:forEach items="${taskLists}" var="item">
+
+            <option value="${item.getId()}"> ${item.getName()}  </option>
+
+>>>>>>> e09f6f9e886a956cd1891eeeeddf593e3c62f016
         </c:forEach>
     </select>
 

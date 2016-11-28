@@ -9,6 +9,7 @@ import java.util.List;
  */
 public interface TaskListDao {
     List<TaskList> getAll();
+<<<<<<< HEAD
 
     TaskList getById(String id);
 
@@ -17,4 +18,6 @@ public interface TaskListDao {
     void update(TaskList taskList);
 
     void delete(String  id);
+=======
+>>>>>>> e09f6f9e886a956cd1891eeeeddf593e3c62f016
 }

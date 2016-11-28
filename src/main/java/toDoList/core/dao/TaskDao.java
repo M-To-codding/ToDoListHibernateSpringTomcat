@@ -12,10 +12,14 @@ public interface TaskDao {
 
     void createTask(Task task);
 
+<<<<<<< HEAD
     void update(Task task);
 
     List<Task> getTasksFromList(String  idlist);
 
     void deleteTask(String  id);
+=======
+    void deleteTask(Integer id);
+>>>>>>> e09f6f9e886a956cd1891eeeeddf593e3c62f016
 
 }

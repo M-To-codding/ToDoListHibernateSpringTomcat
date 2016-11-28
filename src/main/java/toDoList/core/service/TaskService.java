@@ -10,9 +10,13 @@ import java.util.List;
 public interface TaskService {
     public List<Task> getAll();
     public void createTask(Task task);
+<<<<<<< HEAD
     public void update(Task task);
     public List<Task> getActive(String listId);
     public List<Task> getDone(String listId);
     public void deleteTask(String taskId);
 
+=======
+    public void deleteTask(Integer taskId);
+>>>>>>> e09f6f9e886a956cd1891eeeeddf593e3c62f016
 }

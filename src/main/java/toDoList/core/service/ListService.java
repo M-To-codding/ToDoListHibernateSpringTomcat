@@ -11,6 +11,7 @@ import java.util.List;
  */
 public interface ListService {
     public List<TaskList> getAll();
+<<<<<<< HEAD
 
     TaskList getById(String id);
 
@@ -20,3 +21,6 @@ public interface ListService {
 
     void deleteTaskList(String id);
 }
+=======
+}
+>>>>>>> e09f6f9e886a956cd1891eeeeddf593e3c62f016
