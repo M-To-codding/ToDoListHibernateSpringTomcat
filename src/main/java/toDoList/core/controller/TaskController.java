@@ -6,10 +6,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import toDoList.core.model.Task;
 import toDoList.core.model.TaskList;
 import toDoList.core.service.ListService;
 import toDoList.core.service.TaskService;
+import toDoList.core.tasks.TasksSwitcher;
 
 import java.util.List;
 
@@ -17,6 +17,7 @@ import java.util.List;
  * Created by employee on 11/25/16.
  */
 @Controller
+@RequestMapping("/")
 public class TaskController {
 
     @Autowired
@@ -24,34 +25,52 @@ public class TaskController {
     @Autowired
     private ListService listService;
 
-    @RequestMapping(value = "/addTask")
-    public String addTask(){
-
-        return "/addTask";
+    @RequestMapping(value = "/home")
+    public String home() {
+        return "/home";
     }
 
-    @RequestMapping(value = "/addNewTask")
-    public String add(@RequestParam("taskName") String taskName,
-                      @RequestParam("listId") String taskListId) {
+    @RequestMapping("")
+    String homePageTasks(ModelMap modelMap){
+        TasksSwitcher switcher = taskService.getAllTasks();
 
-        Task task = new Task();
-        task.setName(taskName);
-        task.setIsActive(false);
-        task.setListId(taskListId);
+        modelMap.addAttribute("taskActiveList", switcher.getActiveTasks());
+        modelMap.addAttribute("taskDoneList", switcher.getDoneTasks());
+        modelMap.addAttribute("taskLists", listService.getAll());
+        return "home";
+    }
 
-        taskService.addNewTask(taskName, taskListId);
+
+    @RequestMapping("/addTask")
+    String createTask(ModelMap modelMap) {
+        List<TaskList> taskLists = listService.getAll();
+        modelMap.addAttribute("lists", taskLists);
+        return "addTask";
+    }
+
+    @RequestMapping(value = "/addTask", method = RequestMethod.POST)
+    String createTask(@RequestParam("title") String name,
+                      @RequestParam("listId") String listId) {
+        taskService.addNewTask(name, listId);
         return "redirect:/home";
     }
 
-    @RequestMapping(value = "/isActive")
-    public String changeTaskActivity(@RequestParam("taskId")String id, @RequestParam("active") Boolean status) {
-        taskService.switchTaskActivity(id, status);
-        return "redirect:/home";
-    }
-
-    @RequestMapping(value = "/delete")
-    public String delete(@RequestParam("id") String taskId) {
+    @RequestMapping(value = "/addTask", method = RequestMethod.DELETE)
+    String deleteTask(@RequestParam("taskId") String taskId) {
         taskService.deleteTask(taskId);
         return "redirect:/home";
+    }
+
+    @RequestMapping(value = "/switch", method = RequestMethod.PUT)
+    String switchTask(@RequestParam("taskId") String taskId,
+                      @RequestParam("active") Boolean status) {
+        taskService.switchTaskActivity(taskId, status);
+        return "redirect:/home";
+    }
+
+    @RequestMapping(value = "/addTask", method = RequestMethod.PATCH)
+    void updateTask(@RequestParam("id")String id,
+                    @RequestParam("title")String title){
+        taskService.updateTask(id, title);
     }
 }

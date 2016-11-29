@@ -1,21 +1,16 @@
 package toDoList.core.controller;
 
 
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import toDoList.core.model.Task;
-import toDoList.core.model.TaskList;
 import toDoList.core.service.ListService;
 import toDoList.core.service.TaskService;
-
-import java.util.List;
-
-import static org.hibernate.criterion.Restrictions.eq;
+import toDoList.core.tasks.TasksSwitcher;
 
 @Controller
 public class ListController {
@@ -25,54 +20,47 @@ public class ListController {
     @Autowired
     TaskService taskService;
 
-    @RequestMapping(value = "/")
-    public String index() {
-        return "redirect:/home";
+
+    @RequestMapping("/{listId}")
+    String homePage(ModelMap modelMap,
+                    @PathVariable String listId){
+        System.out.println();
+        TasksSwitcher switcher = taskService.getAllTasks(listId);
+
+        modelMap.addAttribute("listId", listId);
+        modelMap.addAttribute("taskActiveList", switcher.getActiveTasks());
+        modelMap.addAttribute("taskDoneList", switcher.getDoneTasks());
+        modelMap.addAttribute("taskLists", listsService.getAll());
+        return "home";
     }
 
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
-    public ModelMap getAllTaskLists() {
-        List<TaskList> taskList = listsService.getAll();
-        ModelMap modelMap = new ModelMap();
-        modelMap.addAttribute("taskLists", taskList);
-        return modelMap;
+    @RequestMapping(value = "/addTasklist", method = RequestMethod.GET)
+    String viewTaskList(ModelMap modelMap){
+        modelMap.addAttribute("taskLists", listsService.getAll());
+        return "/addTasklist";
     }
 
-    @RequestMapping(value = "/addTasklist")
-    public String addListPage() {
+    @RequestMapping(value = "", method = RequestMethod.POST)
+    String createNewTaskList(@RequestParam("title")String name, ModelMap modelMap){
+        listsService.createList(name);
+        modelMap.addAttribute("taskLists", listsService.getAll());
         return "addTasklist";
     }
 
-    @RequestMapping(value = "/addTasklist", method = RequestMethod.POST)
-    public String add(@RequestParam("name") String taskListName) {
-        TaskList taskList = new TaskList();
-        taskList.setName(taskListName);
-        listsService.createList(taskList);
-        return "redirect:/home";
-    }
-
-    @RequestMapping(value = "/tasklistPage")
-    public String tasklistPage(@RequestParam("taskListId") String idList, ModelMap modelMap) {
-        TaskList taskList = listsService.getById(idList);
-        List<Task> isDone = taskService.getDone(idList);
-        List<Task> isActive = taskService.getActive(idList);
-
-        modelMap.addAttribute("taskList", taskList);
-        modelMap.addAttribute("isDone", isDone);
-        modelMap.addAttribute("isActive", isActive);
-
-        return "tasklistPage";
-    }
-
-    @RequestMapping(value = "/newTasklist")
-    public String addPage() {
-        return "newTasklist";
-    }
-
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public String delete(@RequestParam("listId") String listId) {
-        listsService.deleteTaskList(listId);
-        return "redirect:/home";
+    @RequestMapping(value = "", method = RequestMethod.PATCH)
+    void updateList(@RequestParam("listId")String listId,
+                    @RequestParam("title")String listName){
+        listsService.update(listId, listName);
     }
 }
+
+
+
+
+
+
+
+
+
+
 

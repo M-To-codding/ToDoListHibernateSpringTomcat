@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import toDoList.core.model.Task;
 import toDoList.core.model.TaskList;
 
 import java.util.List;
@@ -21,8 +22,10 @@ public class TaskListDaoImpl implements TaskListDao {
     private SessionFactory sessionFactory;
 
     public List<TaskList> getAll() {
-        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(TaskList.class);
-        return (List<TaskList>) criteria.list();
+        Criteria criteria = sessionFactory.getCurrentSession()
+                .createCriteria(TaskList.class);
+        List<TaskList> taskLists = (List<TaskList>) criteria.list();
+        return taskLists;
     }
 
     @Override
@@ -30,19 +33,28 @@ public class TaskListDaoImpl implements TaskListDao {
         return (TaskList) sessionFactory.getCurrentSession().get(TaskList.class, id);
     }
 
-    public void create(TaskList taskList){
-        sessionFactory.getCurrentSession().save(taskList);
+    public void create(String name) {
+        sessionFactory.getCurrentSession().save(new TaskList(name));
     }
 
-    public void update(TaskList taskList) {
+
+    public void update(String listId, String listName) {
         Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(TaskList.class)
+                .add(eq("id", listId));
+        TaskList taskList = (TaskList) criteria.uniqueResult();
+        taskList.setName(listName);
         session.update(taskList);
     }
 
     public void delete(String id) {
-        Session currentSession = sessionFactory.getCurrentSession();
-        TaskList taskList = (TaskList) currentSession.createCriteria(TaskList.class)
-                .add(eq("id", id)).uniqueResult();
-        currentSession.delete(taskList);
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(TaskList.class)
+                .add(eq("id", id));
+        TaskList taskLists = (TaskList) criteria.uniqueResult();
+        for (Task task : taskLists.getAllTasks()) {
+            session.delete(task);
+        }
+        session.delete(taskLists);
     }
 }

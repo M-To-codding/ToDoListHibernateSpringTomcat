@@ -12,9 +12,9 @@ public interface TaskListDao {
 
     TaskList getById(String id);
 
-    void create(TaskList taskList);
+    void create(String name);
 
-    void update(TaskList taskList);
+    void update(String listId, String listName);
 
     void delete(String  id);
 }

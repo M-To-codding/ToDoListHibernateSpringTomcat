@@ -5,7 +5,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "tasklist", catalog = "project")
+@Table(name = "taskList", catalog = "project")
 
 public class TaskList {
     @Id
@@ -18,6 +18,17 @@ public class TaskList {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "tasksList")
     private List<Task> allTasks;
+
+    public TaskList(){ }
+
+    public TaskList(String name){
+        this.name = name;
+    }
+
+    public TaskList(String id, String listName) {
+        this.id = id;
+        this.name = listName;
+    }
 
     public String  getId() {
         return id;

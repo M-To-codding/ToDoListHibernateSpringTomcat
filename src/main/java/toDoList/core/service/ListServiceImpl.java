@@ -1,17 +1,13 @@
 package toDoList.core.service;
 
 import org.hibernate.SessionFactory;
-import org.springframework.transaction.annotation.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import toDoList.core.dao.TaskListDaoImpl;
-import toDoList.core.model.Task;
 import toDoList.core.model.TaskList;
 
 import java.util.List;
-
-import static org.hibernate.criterion.Restrictions.eq;
 
 
 @Service
@@ -32,12 +28,12 @@ public class ListServiceImpl implements ListService {
         return taskListDao.getById(id);
     }
 
-    public void createList(TaskList taskList) {
-        taskListDao.create(taskList);
+    public void createList(String name) {
+        taskListDao.create(name);
     }
 
-    public void update(TaskList taskList) {
-        taskListDao.update(taskList);
+    public void update(String listId, String listName) {
+        taskListDao.update(listId, listName);
     }
 
     public void deleteTaskList(String listId) {

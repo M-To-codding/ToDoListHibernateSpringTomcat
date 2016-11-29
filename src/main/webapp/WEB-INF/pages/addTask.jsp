@@ -11,25 +11,15 @@
 <body>
 <div class="addTasks">
 <a href="/home"> <input type="submit" value="back"> </a>
-
 <form action="/addTask" method="post">
-
-<input type="hidden" name="listId" value="${taskList.getId()}">
-       <input type="text" name="taskName" placeholder="task name" required>
-        <!--  <input type="date" name="taskDate" placeholder="enter date" required> -->
-          <br>
-
-
-    Enter task list name: <select name="listId">
-        <c:forEach items="${taskList}" var="taskList">
-            <option value="${taskList.getId()}">${taskList.getName()}</option>
-        </c:forEach>
-        </select><br>
-
-    <input type="submit" value="Add Task">
-    <br></div>
-
+    <input type="text" name="title" placeholder="Add task" required>
+    Enter task list : <select name="listId">
+    <c:forEach items="${lists}" var="taskList">
+        <option value="${taskList.id}">${taskList.name}</option>
+    </c:forEach>
+    </select><br>
+    <input type="submit" value="Add Task"><br></div>
 </form>
-
+</div>
 </body>
 </html>

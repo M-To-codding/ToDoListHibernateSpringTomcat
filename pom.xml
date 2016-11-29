@@ -63,7 +63,6 @@
             <version>4.3.2.Final</version>
         </dependency>
 
-
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -84,7 +83,7 @@
 
                 <configuration>
                     <path>/</path>
-                    <port>8080</port>
+                    <port>8888</port>
                 </configuration>
             </plugin>
             <plugin>
