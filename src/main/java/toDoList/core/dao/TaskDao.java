@@ -10,12 +10,17 @@ import java.util.List;
 public interface TaskDao {
     List<Task> getAll();
 
-    void createTask(Task task);
+    public void create(String name, String listId);
 
-    void update(Task task);
+    void update(String id, String name);
+
+    void switchTaskStatus(String  taskId, boolean isActive);
+
+    Task getTaskById(String taskId);
 
     List<Task> getTasksFromList(String  idlist);
 
-    void deleteTask(String  id);
+
+    void delete(String taskId);
 
 }

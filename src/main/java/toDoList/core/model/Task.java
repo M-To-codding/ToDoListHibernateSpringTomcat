@@ -26,12 +26,32 @@ public class Task {
     @JoinColumn(name = "id_list", insertable = false, updatable = false )
     private TaskList tasksList;
 
+    public Task(String id, String name) {
+        this.id = id;
+        this.name = name;
+        isActive = true;
+    }
+
+    public Task(String  id, String name, boolean isActive, String  listId) {
+        this.id = id;
+        this.name = name;
+        this.isActive = isActive;
+        this.listId = listId;
+    }
+
+    public Task(String name, boolean isActive, String  listId) {
+        this.name = name;
+        this.isActive = isActive;
+        this.listId = listId;
+    }
+
     public Task() {
     }
 
-    public Task(String name) {
+    public Task(String name, String listId, boolean isActive) {
         this.name = name;
         this.listId = listId;
+        this.isActive = isActive;
     }
 
     public String getId() {
@@ -48,6 +68,14 @@ public class Task {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 
     public Boolean getIsActive() {

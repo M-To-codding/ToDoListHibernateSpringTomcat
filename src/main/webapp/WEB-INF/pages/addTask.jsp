@@ -9,24 +9,25 @@
 		 	<link rel="stylesheet" type="text/css" href="../css/styles.css">
 </head>
 <body>
+<div class="addTasks">
 <a href="/home"> <input type="submit" value="back"> </a>
 
-<form action="/addNewTask">
+<form action="/addTask" method="post">
 
- <input type="hidden" name="listId" value="${taskList.getId()}">
+<input type="hidden" name="listId" value="${taskList.getId()}">
        <input type="text" name="taskName" placeholder="task name" required>
         <!--  <input type="date" name="taskDate" placeholder="enter date" required> -->
           <br>
 
 
-    <select name="taskList">
-        <c:forEach items="${taskLists}" var="item">
-            <option value="${item.getId()}"> ${item.getName()}  </option>
+    Enter task list name: <select name="listId">
+        <c:forEach items="${taskList}" var="taskList">
+            <option value="${taskList.getId()}">${taskList.getName()}</option>
         </c:forEach>
-    </select>
+        </select><br>
 
     <input type="submit" value="Add Task">
-    <br>
+    <br></div>
 
 </form>
 

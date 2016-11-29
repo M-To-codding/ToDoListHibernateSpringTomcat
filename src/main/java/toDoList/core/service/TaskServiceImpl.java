@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import toDoList.core.dao.TaskDaoImpl;
 import toDoList.core.model.Task;
+import toDoList.core.tasks.TasksSwitcher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,59 +21,63 @@ public class TaskServiceImpl implements TaskService {
     @Autowired(required = true)
     private TaskDaoImpl taskDao;
 
-    public void createTask(Task task) {
-        taskDao.createTask(task);
-    }
+    public TasksSwitcher getAllTasks() {
+        TasksSwitcher activities = new TasksSwitcher();
+        List<Task> taskActiveList = new ArrayList();
+        List<Task> taskDoneList = new ArrayList();
 
-    public List<Task> getAll() {
-        return taskDao.getAll();
-    }
-
-    public List<Task> getActive(String listId) {
-        List<Task> active = getTasksActivity(listId, false);
-        return active;
-    }
-
-    public List<Task> getDone(String listId) {
-        List<Task> done = getTasksActivity(listId, true);
-        return done;
-    }
-
-    public void updateActivity(String taskId) {
-        Task task = getTasksFromList(taskId);
-        task.setIsActive(!task.getIsActive());
-        taskDao.update(task);
-    }
-
-    public List<Task> getTasksActivity(String idList, boolean isActive) {
-        List<Task>taskList = new ArrayList<>();
-        for (Task tasks:taskList){
-            if (tasks.getListId().equals(idList) && tasks.getIsActive().equals(isActive)){
-                taskList.add(tasks);
+        List<Task> tasks = taskDao.getAll();
+        for (Task task : tasks) {
+            if (task.isActive()) {
+                taskActiveList.add(task);
+            } else {
+                taskDoneList.add(task);
             }
         }
-        return taskList;
+        activities.setActiveTasks(taskActiveList);
+        activities.setDoneTasks(taskDoneList);
+
+        return activities;
     }
 
-    public Task getTasksFromList(String id){
-        Integer neededTaskId = Integer.valueOf(id);
+    public TasksSwitcher getAllTasks(String listId) {
+        TasksSwitcher tasksSwitcher = new TasksSwitcher();
 
-        Task task = getAll()
-                .stream()
-                .filter(neededTaskList -> neededTaskList.getId().equals(neededTaskId))
-                .findFirst()
-                .get();
+        List<Task> taskActiveList = new ArrayList();
+        List<Task> taskDoneList = new ArrayList();
 
-        return task;
+        List<Task> tasks = taskDao.getTasksFromList(listId);
+        for (Task task : tasks) {
+            if (task.isActive()) {
+                taskActiveList.add(task);
+            } else {
+                taskDoneList.add(task);
+            }
+        }
+        tasksSwitcher.setActiveTasks(taskActiveList);
+        tasksSwitcher.setDoneTasks(taskDoneList);
+
+        return tasksSwitcher;
     }
 
-    public void update(Task task) {
-        taskDao.update(task);
+    public void addNewTask(String name, String listId){
+        taskDao.create(name, listId );
     }
 
     public void deleteTask(String taskId) {
-        taskDao.deleteTask(taskId);
+        taskDao.delete(taskId);
+    }
 
+    public void switchTaskActivity(String taskId, boolean status) {
+        taskDao.switchTaskStatus(taskId, !status);
+    }
+
+    public Task getTaskById(String taskId) {
+        return taskDao.getTaskById(taskId);
+    }
+
+    public void updateTask(String id, String name) {
+        taskDao.update(id, name);
     }
 }
 

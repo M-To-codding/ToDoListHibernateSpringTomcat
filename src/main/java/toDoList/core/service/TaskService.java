@@ -1,6 +1,7 @@
 package toDoList.core.service;
 
 import toDoList.core.model.Task;
+import toDoList.core.tasks.TasksSwitcher;
 
 import java.util.List;
 
@@ -8,11 +9,18 @@ import java.util.List;
  * Created by employee on 11/25/16.
  */
 public interface TaskService {
-    public List<Task> getAll();
-    public void createTask(Task task);
-    public void update(Task task);
-    public List<Task> getActive(String listId);
-    public List<Task> getDone(String listId);
+    public TasksSwitcher getAllTasks();
+
+    public TasksSwitcher getAllTasks(String listId);
+
+    public void addNewTask(String name, String listId);
+
     public void deleteTask(String taskId);
+
+    public void switchTaskActivity(String taskId, boolean status);
+
+    public Task getTaskById(String taskId);
+
+    public void updateTask(String id, String name);
 
 }

@@ -39,13 +39,13 @@ public class TaskController {
         task.setIsActive(false);
         task.setListId(taskListId);
 
-        taskService.createTask(task);
+        taskService.addNewTask(taskName, taskListId);
         return "redirect:/home";
     }
 
     @RequestMapping(value = "/isActive")
-    public String changeTaskActivity(@RequestParam("taskId")String id){
-        taskService.getActive(id);
+    public String changeTaskActivity(@RequestParam("taskId")String id, @RequestParam("active") Boolean status) {
+        taskService.switchTaskActivity(id, status);
         return "redirect:/home";
     }
 
