@@ -16,7 +16,7 @@
                     <assembleDirectory>target</assembleDirectory>
                     <programs>
                         <program>
-                            <mainClass>core.Main</mainClass>
+                            <mainClass>toDoList.core.Main</mainClass>
                             <name>webapp</name>
                         </program>
                     </programs>
