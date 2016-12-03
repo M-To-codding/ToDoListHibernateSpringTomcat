@@ -7,6 +7,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import toDoList.core.Parser;
 
 import javax.sql.DataSource;
 import java.net.URISyntaxException;
@@ -16,13 +17,11 @@ import java.util.Properties;
 @EnableTransactionManagement
 public class HibernateConfiguration {
 
-//    String driverClassName = "org.postgresql.Driver";
-    String driverClassName = "com.mysql.jdbc.Driver";
+    String driverClassName = "org.postgresql.Driver";
 
     static final Properties hibernateProperties = new Properties() {
         {
-            setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-//            setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+            setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
             setProperty("hibernate.show_sql", "true");
             setProperty("hibernate.hbm2ddl.auto", "update");
 
@@ -55,9 +54,26 @@ public class HibernateConfiguration {
 
     @Bean
     public DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource(System.getenv("DATABASE_URL"), "root", "root");
+        DriverManagerDataSource dataSource = null;
+        try {
+            Parser parser = getDataSource();
+            dataSource = new DriverManagerDataSource(parser.getJdbcUrl(),
+                    parser.getUser(),
+                    parser.getPassword());
+            System.out.println(parser.getUser());
+            System.out.println(parser.getUser());
+            System.out.println(parser.getJdbcUrl());
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
         dataSource.setDriverClassName(driverClassName);
 
         return dataSource;
+    }
+
+    @Bean
+    public Parser getDataSource() throws URISyntaxException {
+        Parser parser = new Parser(System.getenv("DATABASE_URL"));
+        return parser;
     }
 }

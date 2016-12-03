@@ -1,4 +1,4 @@
-package toDoList;
+package toDoList.core;
 
 import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.WebResourceSet;
