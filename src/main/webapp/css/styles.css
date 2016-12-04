@@ -1,10 +1,10 @@
 * {
-  font-family: Lato;
-  	font-style: normal;
-  	font-variant: normal;
-  	font-weight: 220;
-  	line-height: 15px;
-  }
+    font-family: Lato;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 220;
+    line-height: 15px;
+}
 
 body {
     background-image: url('http://cloudberrystudio.ru/ff/4/fon_bumaga_myataya_2048x1536.jpg');
@@ -58,15 +58,15 @@ body {
 }
 
 .forTaskButton {
-margin-top: 0;
-border-radius: 0px 0px 5px 5px;
-padding-bottom: 20px;
-padding-left: 40px;
-border-color:  rgba(0, 9, 36, 0.2);
+    margin-top: 0;
+    border-radius: 0px 0px 5px 5px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    border-color:  rgba(0, 9, 36, 0.2);
 }
 
 .addTasks {
-display:block;
+    display:block;
     width:450px;
     margin-left: 500px;
     height:inherit;
@@ -82,9 +82,9 @@ display:block;
 }
 
 .activeTasks {
-background-color: rgba(255, 255, 214, 0.3);
+    background-color: rgba(255, 255, 214, 0.9);
     border-radius: 10px;
-    border:2px solid rgba(234, 230, 255, 1);
+rgba(255, 255, 255, 0.21);
     color:gray;
     transition: all .2s ease-in-out;
     padding: 5px;
@@ -95,9 +95,9 @@ background-color: rgba(255, 255, 214, 0.3);
 }
 
 .doneTasks {
-background-color: rgba(115, 205, 230, 0.5);
-    border-radius: 10px;
-    border:2px solid rgba(234, 230, 255, 1);
+    background-color: rgba(156, 150, 153, 0.71);
+    border-radius:0px;
+    border:2px solid rgba(244, 243, 249, 0.95);
     padding: 5px;
     padding-bottom: 25px;
     margin-left: 300px;
@@ -106,12 +106,13 @@ background-color: rgba(115, 205, 230, 0.5);
 }
 
 a {
-text-decoration:none;
+    text-decoration:none;
 }
 
 .options {
-padding-left:300px;
-margin-left: 300px;
-background-color: rgba(165, 125, 240, 0.5);
-width:450px;
+    padding-left:300px;
+    margin-left: 300px;
+    background-color: rgb(244, 242, 243);
+    width:450px;
+    border-radius: 0;
 }
