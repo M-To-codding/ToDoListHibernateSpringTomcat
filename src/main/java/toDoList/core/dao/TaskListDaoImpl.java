@@ -35,7 +35,7 @@ public class TaskListDaoImpl implements TaskListDao {
     public void delete(String listId) {
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(TaskList.class)
-                .add(eq("id", listId));
+                .add(eq("id", Integer.parseInt(listId)));
         TaskList taskLists = (TaskList) criteria.uniqueResult();
         for (Task task : taskLists.getAllTasks()) {
             session.delete(task);
@@ -46,7 +46,7 @@ public class TaskListDaoImpl implements TaskListDao {
     public void update(String listId, String name) {
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(TaskList.class)
-                .add(eq("id", listId));
+                .add(eq("id", Integer.parseInt(listId)));
         TaskList taskList = (TaskList) criteria.uniqueResult();
         taskList.setName(name);
         session.update(taskList);

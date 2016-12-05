@@ -11,7 +11,7 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private String id;
+    private int id;
 
     @Column(name = "name")
     private String name;
@@ -20,7 +20,7 @@ public class Task {
     private Boolean isActive = false;
 
     @Column(name = "id_list")
-    private String listId;
+    private int listId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_list", insertable = false, updatable = false )
@@ -29,32 +29,32 @@ public class Task {
     public Task() {
     }
 
-    public Task(String id, String name) {
+    public Task(int id, String name) {
         this.id = id;
         this.name = name;
         isActive = true;
     }
 
-    public Task(String name, boolean isActive, String  listId) {
+    public Task(String name, boolean isActive, int  listId) {
         this.name = name;
         this.isActive = isActive;
         this.listId = listId;
     }
 
-    public Task(String name, String listId, boolean isActive) {
+    public Task(String name, int listId, boolean isActive) {
         this.name = name;
         this.listId = listId;
         this.isActive = isActive;
     }
 
-    public Task(String  id, String name, boolean isActive, String  listId) {
+    public Task(int  id, String name, boolean isActive, int listId) {
         this.id = id;
         this.name = name;
         this.isActive = isActive;
         this.listId = listId;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -74,7 +74,7 @@ public class Task {
         this.isActive = isActive;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -86,11 +86,11 @@ public class Task {
         return isActive;
     }
 
-    public String getListId() {
+    public int getListId() {
         return listId;
     }
 
-    public void setListId(String listId) {
+    public void setListId(int listId) {
         this.listId = listId;
     }
 }

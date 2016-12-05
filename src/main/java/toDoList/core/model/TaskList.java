@@ -1,17 +1,16 @@
 package toDoList.core.model;
 
 import javax.persistence.*;
-//import org.hibernate.annotations.Entity;
 import java.util.List;
 
 @Entity
-@Table(name = "taskList", catalog = "project")
+@Table(name = "task_list", catalog = "project")
 
 public class TaskList {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String listId;
+    private int listId;
 
     @Column(name = "name")
     private String name;
@@ -19,7 +18,7 @@ public class TaskList {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "tasksList")
     private List<Task> allTasks;
 
-    public TaskList(String listId, String name) {
+    public TaskList(int listId, String name) {
         this.listId = listId;
         this.name = name;
     }
@@ -30,7 +29,7 @@ public class TaskList {
 
     public TaskList(){}
 
-    public void setId(String listId) {
+    public void setId(int listId) {
         this.listId = listId;
     }
 
@@ -42,7 +41,7 @@ public class TaskList {
         this.allTasks = allTasks;
     }
 
-    public String getId() {
+    public int getId() {
         return listId;
     }
 

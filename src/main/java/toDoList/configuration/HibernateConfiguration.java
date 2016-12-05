@@ -7,7 +7,6 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import toDoList.core.Parser;
 
 import javax.sql.DataSource;
 import java.net.URISyntaxException;
@@ -40,7 +39,7 @@ public class HibernateConfiguration {
     public LocalSessionFactoryBean sessionFactory() throws URISyntaxException {
         final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("core/model");
+        sessionFactory.setPackagesToScan("toDoList.core.model");
         sessionFactory.setHibernateProperties(hibernateProperties);
         return sessionFactory;
     }
@@ -55,25 +54,12 @@ public class HibernateConfiguration {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = null;
-        try {
-            Parser parser = getDataSource();
-            dataSource = new DriverManagerDataSource(parser.getJdbcUrl(),
-                    parser.getUser(),
-                    parser.getPassword());
-            System.out.println(parser.getUser());
-            System.out.println(parser.getUser());
-            System.out.println(parser.getJdbcUrl());
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
+            dataSource = new DriverManagerDataSource("jdbc:postgresql://localhost:5432/project",
+                    "postgres",
+                    "root");
+
         dataSource.setDriverClassName(driverClassName);
 
         return dataSource;
-    }
-
-    @Bean
-    public Parser getDataSource() throws URISyntaxException {
-        Parser parser = new Parser(System.getenv("DATABASE_URL"));
-        return parser;
     }
 }
