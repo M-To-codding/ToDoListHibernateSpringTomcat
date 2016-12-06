@@ -3,6 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>ToDoList</groupId>
     <artifactId>ToDoList</artifactId>
+<<<<<<< HEAD
     <packaging>jar</packaging>
     <version>1.0</version>
     <build>
@@ -130,12 +131,32 @@
             <artifactId>standard</artifactId>
             <version>1.1.2</version>
         </dependency>
+=======
+    <packaging>war</packaging>
+    <version>1.0</version>
+
+    <name>ToDoList</name>
+    <url>http://maven.apache.org</url>
+
+
+    <dependencies>
+
+        <!-- Servlet Library -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+>>>>>>> origin/newBranch
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
 
+<<<<<<< HEAD
         <!-- JUNIT -->
 
         <dependency>
@@ -164,17 +185,29 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>${spring.version}</version>
+=======
+        <!-- Spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>4.3.4.RELEASE</version>
+>>>>>>> origin/newBranch
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
+<<<<<<< HEAD
             <version>${spring.version}</version>
+=======
+            <version>4.3.4.RELEASE</version>
+>>>>>>> origin/newBranch
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
+<<<<<<< HEAD
             <version>${spring.version}</version>
         </dependency>
 
@@ -191,12 +224,67 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>9.3-1102-jdbc41</version>
+=======
+            <version>4.3.4.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>4.3.4.RELEASE</version>
+>>>>>>> origin/newBranch
         </dependency>
 
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
+<<<<<<< HEAD
             <version>${hibernate.version}</version>
         </dependency>
     </dependencies>
+=======
+            <version>4.3.8.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>4.3.2.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.31</version>
+        </dependency>
+
+    </dependencies>
+
+
+    <build>
+        <finalName>ToDoList</finalName>
+        <plugins>
+            <!-- Config: Maven Tomcat Plugin -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+
+                <configuration>
+                    <path>/</path>
+                    <port>8888</port>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+>>>>>>> origin/newBranch
 </project>

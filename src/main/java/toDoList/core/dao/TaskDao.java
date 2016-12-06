@@ -14,6 +14,7 @@ public interface TaskDao {
 
     void update(String id, String name);
 
+<<<<<<< HEAD
     void switchTaskStatus(String  id, boolean isActive);
 
     Task getTaskById(String id);
@@ -22,5 +23,15 @@ public interface TaskDao {
 
 
     void delete(String id);
+=======
+    void switchTaskStatus(String  taskId, boolean isActive);
+
+    Task getTaskById(String taskId);
+
+    List<Task> getTasksFromList(String  idlist);
+
+
+    void delete(String taskId);
+>>>>>>> origin/newBranch
 
 }

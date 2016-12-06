@@ -28,20 +28,46 @@ public class TaskListDaoImpl implements TaskListDao {
         return taskLists;
     }
 
+<<<<<<< HEAD
+=======
+    @Override
+    public TaskList getById(String id) {
+        return (TaskList) sessionFactory.getCurrentSession().get(TaskList.class, id);
+    }
+
+>>>>>>> origin/newBranch
     public void create(String name) {
         sessionFactory.getCurrentSession().save(new TaskList(name));
     }
 
+<<<<<<< HEAD
     public void delete(String listId) {
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(TaskList.class)
                 .add(eq("id", Integer.parseInt(listId)));
+=======
+
+    public void update(String listId, String listName) {
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(TaskList.class)
+                .add(eq("id", listId));
+        TaskList taskList = (TaskList) criteria.uniqueResult();
+        taskList.setName(listName);
+        session.update(taskList);
+    }
+
+    public void delete(String id) {
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(TaskList.class)
+                .add(eq("id", id));
+>>>>>>> origin/newBranch
         TaskList taskLists = (TaskList) criteria.uniqueResult();
         for (Task task : taskLists.getAllTasks()) {
             session.delete(task);
         }
         session.delete(taskLists);
     }
+<<<<<<< HEAD
 
     public void update(String listId, String name) {
         Session session = sessionFactory.getCurrentSession();
@@ -52,3 +78,6 @@ public class TaskListDaoImpl implements TaskListDao {
         session.update(taskList);
     }
 }
+=======
+}
+>>>>>>> origin/newBranch
