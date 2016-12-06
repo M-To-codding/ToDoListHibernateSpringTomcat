@@ -37,49 +37,50 @@ import java.util.List;
  */
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({"toDoList.configuration"})
-@PropertySource(value = {"classpath:hibernate.properties"})
+@ComponentScan(basePackages = {"core", "configuration"})
+@Import({HibernateConfiguration.class})
+//@PropertySource(value = {"classpath:hibernate.properties"})
 public class AppConfiguration {
-
-    @Autowired
-    private Environment environment;
-
     @Bean
-    public LocalSessionFactoryBean sessionFactory() {
-        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-        sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[]{"toDoList.core.model"});
-        sessionFactory.setHibernateProperties(hibernateProperties);
-        return sessionFactory;
+    public PropertyPlaceholderConfigurer propertyPlaceholderConfigurer() {
+        PropertyPlaceholderConfigurer ppc = new PropertyPlaceholderConfigurer();
+        ppc.setLocation(new ClassPathResource("hibernate.properties"));
+        ppc.setIgnoreUnresolvablePlaceholders(true);
+        return ppc;
     }
-
-    static final Properties hibernateProperties = new Properties() {
-        {
-            setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-            setProperty("hibernate.show_sql", "true");
-        }
-    };
-
-    @Bean
-    public DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("spring.datasource.driver-class-name");
-        dataSource.setUrl("spring.datasource.url");
-        dataSource.setUsername("spring.datasource.username");
-        dataSource.setPassword("spring.datasource.password");
-        return dataSource;
-    }
-
-    public HibernateTransactionManager transactionManager() throws URISyntaxException {
-        HibernateTransactionManager trm = new HibernateTransactionManager();
-        trm.setSessionFactory(sessionFactory().getObject());
-        return trm;
-    }
-}
+//    @Autowired
+//    private Environment environment;
+//
 //    @Bean
-//    public PropertyPlaceholderConfigurer propertyPlaceholderConfigurer() {
-//        PropertyPlaceholderConfigurer ppc = new PropertyPlaceholderConfigurer();
-//        ppc.setLocation(new ClassPathResource("hibernate.properties"));
-//        ppc.setIgnoreUnresolvablePlaceholders(true);
-//        return ppc;
+//    public LocalSessionFactoryBean sessionFactory() {
+//        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+//        sessionFactory.setDataSource(dataSource());
+//        sessionFactory.setPackagesToScan(new String[]{"toDoList.core.model"});
+//        sessionFactory.setHibernateProperties(hibernateProperties);
+//        return sessionFactory;
 //    }
+//
+//    static final Properties hibernateProperties = new Properties() {
+//        {
+//            setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+//            setProperty("hibernate.show_sql", "true");
+//        }
+//    };
+//
+//    @Bean
+//    public DataSource dataSource() {
+//        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+//        dataSource.setDriverClassName("spring.datasource.driver-class-name");
+//        dataSource.setUrl("spring.datasource.url");
+//        dataSource.setUsername("spring.datasource.username");
+//        dataSource.setPassword("spring.datasource.password");
+//        return dataSource;
+//    }
+//
+//    public HibernateTransactionManager transactionManager() throws URISyntaxException {
+//        HibernateTransactionManager trm = new HibernateTransactionManager();
+//        trm.setSessionFactory(sessionFactory().getObject());
+//        return trm;
+//    }
+}
+
