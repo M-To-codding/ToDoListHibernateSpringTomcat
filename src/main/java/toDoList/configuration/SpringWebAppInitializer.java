@@ -1,9 +1,16 @@
 package toDoList.configuration;
 
+import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.context.ContextLoaderListener;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.servlet.DispatcherServlet;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletRegistration;
+
 /**
  * Created by employee on 11/23/16.
  */
-<<<<<<< HEAD
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -13,6 +20,9 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletRegistration;
 
 public class SpringWebAppInitializer implements WebApplicationInitializer {
+
+    private static final String CONFIG_LOCATION = "/configuration/";
+    private static final String MAPPING_URL = "/";
 
     @Override
     public void onStartup(ServletContext servletContext) {
@@ -23,44 +33,21 @@ public class SpringWebAppInitializer implements WebApplicationInitializer {
         rootContext.setServletContext(servletContext);
 
         ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher", new DispatcherServlet(rootContext));
-        dispatcher.addMapping("/");
+        dispatcher.addMapping(MAPPING_URL);
         dispatcher.setLoadOnStartup(1);
     }
-
-=======
-
-import javax.servlet.FilterRegistration;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
-
-import org.springframework.web.WebApplicationInitializer;
-import org.springframework.web.context.ContextLoaderListener;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
-import org.springframework.web.filter.CharacterEncodingFilter;
-import org.springframework.web.servlet.DispatcherServlet;
-
-
-public class SpringWebAppInitializer implements WebApplicationInitializer {
-    public void onStartup(ServletContext servletContext) throws ServletException {
-        AnnotationConfigWebApplicationContext appContext = new AnnotationConfigWebApplicationContext();
-        appContext.register(WebMvcConfiguration.class);
-
-        ServletRegistration.Dynamic dispatcher = servletContext.addServlet("SpringDispatcher",
-                new DispatcherServlet(appContext));
-        dispatcher.setLoadOnStartup(1);
-        dispatcher.addMapping("/");
-
-        dispatcher.setInitParameter("contextClass", appContext.getClass().getName());
-
-        servletContext.addListener(new ContextLoaderListener(appContext));
-
-
-        FilterRegistration.Dynamic fr = servletContext.addFilter("encodingFilter", CharacterEncodingFilter.class);
-
-        fr.setInitParameter("encoding", "UTF-8");
-        fr.setInitParameter("forceEncoding", "true");
-        fr.addMappingForUrlPatterns(null, true, "/*");
-    }
->>>>>>> origin/newBranch
 }
+
+//        WebApplicationContext context = getContext();
+//        servletContext.addListener(new ContextLoaderListener(context));
+//        ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher", new DispatcherServlet(context));
+//        dispatcher.setLoadOnStartup(1);
+//        dispatcher.addMapping(MAPPING_URL);
+
+//
+//    private AnnotationConfigWebApplicationContext getContext() {
+//        AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
+//        context.setConfigLocation(CONFIG_LOCATION);
+//        return context;
+//    }
+

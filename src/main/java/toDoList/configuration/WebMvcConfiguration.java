@@ -25,25 +25,21 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
     }
 
     @Override
-<<<<<<< HEAD
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-=======
-    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer){
->>>>>>> origin/newBranch
         configurer.enable();
     }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-<<<<<<< HEAD
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
-=======
-        registry.addResourceHandler("/resources/**").addResourceLocations("../resources/");
-//        registry.addResourceHandler("/css/**").addResourceLocations("/css/").setCachePeriod(31556926);
-//        registry.addResourceHandler("/img/**").addResourceLocations("/img/").setCachePeriod(31556926);
-//        registry.addResourceHandler("/js/**").addResourceLocations("/js/").setCachePeriod(31556926);
-    }
-
->>>>>>> origin/newBranch
 }
+//    @Override
+//    public void addCorsMappings(CorsRegistry registry) {
+//        registry.addMapping("/**")
+//                .allowedOrigins("http://localhost:8080")
+//                .allowedMethods("GET", "POST", "DELETE", "UPDATE")
+//                .allowedHeaders("/", "/*")
+//                .exposedHeaders("/**")
+//                .allowCredentials(false).maxAge(3600);
+//    }

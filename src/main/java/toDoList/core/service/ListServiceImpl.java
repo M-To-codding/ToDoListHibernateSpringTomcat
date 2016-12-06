@@ -1,16 +1,10 @@
 package toDoList.core.service;
 
 import org.hibernate.SessionFactory;
-<<<<<<< HEAD
 import org.springframework.transaction.annotation.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-=======
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
->>>>>>> origin/newBranch
 import toDoList.core.dao.TaskListDaoImpl;
 import toDoList.core.model.TaskList;
 
@@ -26,15 +20,11 @@ public class ListServiceImpl implements ListService {
 
     SessionFactory sessionFactory;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/newBranch
     public List<TaskList> getAll() {
         return taskListDao.getAll();
     }
 
-<<<<<<< HEAD
     public void createTaskList(String name) {
         taskListDao.create(name);
     }
@@ -47,22 +37,3 @@ public class ListServiceImpl implements ListService {
         taskListDao.update(listId, name);
     }
 }
-=======
-    @Override
-    public TaskList getById(String id) {
-        return taskListDao.getById(id);
-    }
-
-    public void createList(String name) {
-        taskListDao.create(name);
-    }
-
-    public void update(String listId, String listName) {
-        taskListDao.update(listId, listName);
-    }
-
-    public void deleteTaskList(String listId) {
-        taskListDao.delete(listId);
-    }
-}
->>>>>>> origin/newBranch
